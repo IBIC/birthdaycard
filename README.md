@@ -5,7 +5,7 @@ It takes the brain image, identifies an attractive sagittal slice, overlays a pa
 		 
 *Include a sample output.*
 		 
-# Requirements to run
+# Program requirements 
 	
 Prerequisites. This program is a Bash shell script that uses programs from the FSL software suite. It has been tested in Linux but should also run on macOS.
 
@@ -70,7 +70,7 @@ The file name of the created card will be will be "alexdoe.jpg", and the path wi
 
 The program has 5 different flags. Flags -t, -s, -o, and -n are
 required, and flag -d is optional.  The order does not matter.
-These flags and their descriptors can also be found by typing
+These flags and their descriptors can be found by typing
 
 ```
 ibic_birthdaycard -h
@@ -105,12 +105,11 @@ directory contains the `ibic_birthdaycard`
 shell script, and a `lib` directory with supporting files (e.g., the
 image of the birthday hat). 
 
-By default, if you cd into the `birthdaycard` directory and run the `ibic_birthdaycard, everything will work correctly.
+By default, if you cd into the `birthdaycard` directory and run the `ibic_birthdaycard` program, everything will work correctly.
 
 However, if you wish, you can install the program for all users. Copy
-the `lib` directory into a shared location, and edit the variable `LIB_IBIC_BIRTHDAYCARD` in the `ibic_birthdaycard` executable
+the `lib` directory into a shared location, and edit the variable `LIB_IBIC_BIRTHDAYCARD` in the `ibic_birthdaycard` script
 to be the new location of your `lib` directory.
-
 
 
 # Assembling and Distributing the Cards
@@ -126,7 +125,8 @@ holders can be decorated with markers, embossing powder, stamps, etc.
 
 The default image size is 4 inches wide by 6 inches tall, which can be
 changed in the program. As of this writing, Bartells charges $0.19
-cents for each 4x6" print, and Amazon charges $0.09 cents for each print. 
+cents for each 4x6" print, and Amazon charges $0.09 cents for each
+print; this size is quite affordable.
 
 The cards and envelopes can be purchased online in bulk and prepared
 in advance. We also include an insert that makes it clear that the
@@ -144,17 +144,21 @@ fun decorating party.
 Here are some sources for frame cards that hold 4x6" photos.
 
 [Black Frames](https://www.bagsunlimited.com/product/7955/photo-frame-card)
+
+
 [Black Envelopes](http://www.bagsunlimited.com/product/7959/photo-frame-envelope)
+
+
 [White Frames and Envelopes](https://www.amazon.com/Strathmore-STR-105-250-White-Photo-Frame/dp/B000KNDKBI/ref=sr_1_3?ie=UTF8&qid=1520447257&sr=8-3&keywords=strathmore+photo+frame+cards)
 
 
 # Credits
 This program was a team effort from conception to distribution. These are the people who helped at many steps along the way.
 
-Christina Caso
-An Wang
-Briana Lee
-Trevor Day
-Ji-Min Wang
-Josh Wolfe
-Tara Madhyastha
+-Christina Caso
+-An Wang
+-Briana Lee
+-Trevor Day
+-Ji-Min Wang
+-Josh Wolfe
+-Tara Madhyastha
