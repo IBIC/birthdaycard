@@ -155,10 +155,10 @@ Here are some sources for frame cards that hold 4x6" photos.
 # Credits
 This program was a team effort from conception to distribution. These are the people who helped at many steps along the way.
 
-*Christina Caso
-*An Wang
-*Briana Lee
-*Trevor Day
-*Ji-Min Wang
-*Josh Wolfe
-*Tara Madhyastha
+* Christina Caso
+* An Wang
+* Briana Lee
+* Trevor Day
+* Ji-Min Wang
+* Josh Wolfe
+* Tara Madhyastha
