@@ -3,7 +3,7 @@
 This program generates a birthday card from an individual's structural MRI. 
 It takes the brain image, identifies an attractive sagittal slice, overlays a party hat image, text that states “Happy Birthday” and “We Lobe You” on this slice, and creates an output image as shown below.
 		 
-*Include a sample output.*
+*Include a sample output - put it in the sampledata directory.*
 		 
 # Program requirements 
 	
