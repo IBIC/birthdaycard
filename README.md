@@ -3,7 +3,7 @@
 This program generates a birthday card from an individual's structural MRI. 
 It takes the brain image, identifies an attractive sagittal slice, overlays a party hat image, text that states “Happy Birthday” and “We Lobe You” on this slice, and creates an output image as shown below.
 		 
-*Include a sample output - put it in the sampledata directory.*
+*Include a sample output picture here- put it in the sampledata directory.*
 		 
 # Program requirements 
 	
@@ -57,7 +57,7 @@ matches those of the standard MNI template image.
 To run, cd into the `birthdaycard` directory and type the following.
 
 ```
-ibic_birthdaycard -t sampledata/T1.nii.gz -s sampledata/T1_skullstripped.nii.gz -o alexdoe -n "Alex Doe"
+./ibic_birthdaycard -t sampledata/T1.nii.gz -s sampledata/T1_skullstripped.nii.gz -o alexdoe -n "Alex Doe"
 ```
 
 You see output on the terminal that looks like this.
@@ -73,7 +73,7 @@ required, and flag -d is optional.  The order does not matter.
 These flags and their descriptors can be found by typing
 
 ```
-ibic_birthdaycard -h
+./ibic_birthdaycard -h
 ```
 
 The -t flag specifies the name of the full structural scan file. (Must be in standard orientation)
@@ -91,11 +91,15 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 
 The file name and the path to where it was saved will be shown in the terminal. In this case, it will look like this
 
-     ~/birthday-card/bin/johndoe.jpg
+```
+~/birthdaycard/johndoe.jpg
+```
 
 By default this output is a 4x6 image that is viewable in a browser by running a command similar to
 
-    firefox johndoe.jpg
+```
+firefox ~/birthdaycard/johndoe.jpg
+```
 
 ## Installing 
 
