@@ -40,7 +40,7 @@ There are two ways to download this program. Use the first method if you do not 
 Type the following command at your prompt:
 
 ```
-git https://github.com/IBIC/birthdaycard
+git clone https://github.com/IBIC/birthdaycard.git
 ```
 
 
