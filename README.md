@@ -3,8 +3,8 @@
 This program generates a birthday card from an individual's structural MRI. 
 It takes the brain image, identifies an attractive sagittal slice, overlays a party hat image, text that states “Happy Birthday” and “We Lobe You” on this slice, and creates an output image as shown below.
 		 
-		 [[IBIC/birthdaycard/alexdoe.jpg|example]]
-		 
+[Example](IBIC/birthdaycard/alexdoe.jpg)
+
 # Program requirements 
 	
 Prerequisites. This program is a Bash shell script that uses programs from the FSL software suite. It has been tested in Linux but should also run on macOS.
@@ -28,8 +28,11 @@ unique keepsake.
 There are two ways to download this program. Use the first method if you do not have `git` installed, or are not comfortable with `git`. 
 
 1. As a zip file from Github
+	1. Download the zip file from [IBIC/birthdaycard](https://github.com/IBIC/birthdaycard)
+	2. Extract the zip file `birthdaycard-master.zip` to the top of the main directory
+	3. A new folder will be made `birthdaycard-master`
+	4. This is where the program will be ran from
 	
-	*document this*
 
 	   
 2. Using Git
@@ -62,7 +65,7 @@ To run, cd into the `birthdaycard` directory and type the following.
 
 You see output on the terminal that looks like this.
 
-[[IBIC/birthdaycard/screendump]]
+[screendump](IBIC/birthdaycard/screendump.jpg)
 
 The file name of the created card will be will be "alexdoe.jpg", and the path will be displayed in the terminal. You can view it by *how to view*. It should look like the example above.
 
@@ -86,6 +89,10 @@ The -n flag specifies the name displayed in the birthday card (put name in quota
 
 The -d flag is optional and  used to determine which saggital slice to use for the card, counted in centimeters, for the best image. By default, a saggital slice 1mm to the *right or left* of the midline is selected. Use this flag to override this selection if the saggital slice selected by default is not attractive.
 
+It is important to verify that the saggital slice chosen is attactrive and free of artifacts.
+
+[Here is a good example of a bad slice](IBIC/birthdaycard/wapostscan.jpg)
+[Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
 
 ### Output
 
@@ -98,7 +105,7 @@ The file name and the path to where it was saved will be shown in the terminal. 
 By default this output is a 4x6 image that is viewable in a browser by running a command similar to
 
 ```
-firefox ~/birthdaycard/johndoe.jpg
+firefox ~/birthdaycard/alexdoe.jpg
 ```
 
 ## Installing 
