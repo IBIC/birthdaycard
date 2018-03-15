@@ -45,9 +45,9 @@ git https://github.com/IBIC/birthdaycard
 
 For demonstration purposes we have included two NiFTI files, a
 structural (`T1.nii.gz`) and skull stripped version
-(`T1_skullstripped.nii.gz`). This is subject XXXX from the publically
-available ABIDE data set (include link here). We have given this subject
-the name "John Doe". *don't choose a gender if you don't have to - what about Alex or Drew* 
+(`T1_skullstripped.nii.gz`). This is subject 50777 from the publically
+available [ABIDE data set](http://fcon_1000.projects.nitrc.org/indi/abide/). We have given this subject
+the name "Alex Doe".
 
 Note that the program assumes that the orientation of the NiFTI files
 matches those of the standard MNI template image.
@@ -92,7 +92,7 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 The file name and the path to where it was saved will be shown in the terminal. In this case, it will look like this
 
 ```
-~/birthdaycard/johndoe.jpg
+~/birthdaycard/alexdoe.jpg
 ```
 
 By default this output is a 4x6 image that is viewable in a browser by running a command similar to
@@ -139,7 +139,8 @@ for their contribution, and includes contact information for the site.
 
 We have found that it is easiest to assemble and decorate cards at the
 begining of the year, organize them by birthday month, and mail cards
-at the end of every month for birthdays occurring in the next month. 
+at the end of every month for birthdays occurring in the next month. We
+have also found that Mail Merge is a good tool for creating mailing lables.
 
 In this way, assembling and decorating the cards can be done all at
 once, and gives a good excuse to get the entire office together for a
