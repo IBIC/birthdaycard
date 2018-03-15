@@ -30,8 +30,8 @@ There are two ways to download this program. Use the first method if you do not 
 1. As a zip file from Github
 	1. Download the zip file from [IBIC/birthdaycard](https://github.com/IBIC/birthdaycard)
 	2. Extract the zip file `birthdaycard-master.zip` to the top of the main directory
-	3. A new folder will be made `birthdaycard-master`
-	4. This is where the program will be ran from
+	3. A new folder named `birthdaycard-master` will be created
+	4. This is where the program will be ran from for all users
 	
 
 	   
@@ -89,7 +89,7 @@ The -n flag specifies the name displayed in the birthday card (put name in quota
 
 The -d flag is optional and  used to determine which saggital slice to use for the card, counted in centimeters, for the best image. By default, a saggital slice 1mm to the *right or left* of the midline is selected. Use this flag to override this selection if the saggital slice selected by default is not attractive.
 
-It is important to verify that the saggital slice chosen is attactrive and free of artifacts.
+It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
 
 [Here is a good example of a bad slice](IBIC/birthdaycard/wapostscan.jpg)
 [Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
@@ -143,6 +143,8 @@ The cards and envelopes can be purchased online in bulk and prepared
 in advance. We also include an insert that makes it clear that the
 card is made from the participant's own image, thanks the participant
 for their contribution, and includes contact information for the site.
+We have included an example of our insert. These can be printed 4 to a
+page, cut out, and placed in the card.
 
 We have found that it is easiest to assemble and decorate cards at the
 begining of the year, organize them by birthday month, and mail cards
