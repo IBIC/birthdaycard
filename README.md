@@ -3,7 +3,7 @@
 This program generates a birthday card from an individual's structural MRI. 
 It takes the brain image, identifies an attractive sagittal slice, overlays a party hat image, text that states “Happy Birthday” and “We Lobe You” on this slice, and creates an output image as shown below.
 		 
-*Include a sample output picture here- put it in the sampledata directory.*
+		 [[IBIC/birthdaycard/alexdoe.jpg|example]]
 		 
 # Program requirements 
 	
@@ -62,7 +62,7 @@ To run, cd into the `birthdaycard` directory and type the following.
 
 You see output on the terminal that looks like this.
 
-*include screen dump of output*
+[[IBIC/birthdaycard/screendump]]
 
 The file name of the created card will be will be "alexdoe.jpg", and the path will be displayed in the terminal. You can view it by *how to view*. It should look like the example above.
 
