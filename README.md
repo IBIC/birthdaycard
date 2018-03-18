@@ -3,7 +3,7 @@
 This program generates a birthday card from an individual's structural MRI. 
 It takes the brain image, identifies an attractive sagittal slice, overlays a party hat image, text that states “Happy Birthday” and “We Lobe You” on this slice, and creates an output image as shown below.
 		 
-[Example](IBIC/birthdaycard/alexdoe.jpg)
+![Example](https://github.com/IBIC/birthdaycard/blob/master/sampledata/alexdoe.jpg)
 
 # Program requirements 
 	
@@ -65,7 +65,7 @@ To run, cd into the `birthdaycard` directory and type the following.
 
 You see output on the terminal that looks like this.
 
-[screendump](IBIC/birthdaycard/screendump.jpg)
+![screendump](https://github.com/IBIC/birthdaycard/blob/master/pics/screendump.png)
 
 The file name of the created card will be will be "alexdoe.jpg", and the path will be displayed in the terminal. You can view it by *how to view*. It should look like the example above.
 
@@ -91,7 +91,7 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 
 It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
 
-[Here is a good example of a bad slice](IBIC/birthdaycard/wapostscan.jpg)
+![Here is a good example of a bad slice](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg)
 [Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
 
 ### Output
