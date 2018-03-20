@@ -53,7 +53,7 @@ available [ABIDE data set](http://fcon_1000.projects.nitrc.org/indi/abide/). We 
 the name "Alex Doe".
 
 Note that the program assumes that the orientation of the NiFTI files
-matches those of the standard MNI template image.
+matches those of the standard MNI template image as well as MNI spacial normalization.
 
 ### Quick Start
 
@@ -92,6 +92,7 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
 
 ![Here is a good example of a bad slice](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg)
+
 [Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
 
 ### Output
