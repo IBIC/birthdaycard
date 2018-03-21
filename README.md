@@ -91,8 +91,9 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 
 It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
 
+<div style="width:300px; height=300px">
 ![Here is a good example of a bad slice](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg)
-
+</div>
 [Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
 
 ### Output
@@ -122,6 +123,11 @@ By default, if you cd into the `birthdaycard` directory and run the `ibic_birthd
 However, if you wish, you can install the program for all users. Copy
 the `lib` directory into a shared location, and edit the variable `LIB_IBIC_BIRTHDAYCARD` in the `ibic_birthdaycard` script
 to be the new location of your `lib` directory.
+
+There are two ways to manipulate this variable
+
+1. The variable can be set either in the terminal with `LIB_IBIC_BIRTHDAYCARD=example/pathway`
+2. Or the variable can be ignored and the pathway can be edited on line 105 in the ibic_birthdaycard shell script. Replace `$(pwd)/lib` with the desired pathway.
 
 
 # Assembling and Distributing the Cards
