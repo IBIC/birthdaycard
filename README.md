@@ -92,7 +92,7 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
 
 
-![image](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg){width=300pc}
+![image](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg){width=300px}
 
 [Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
 
