@@ -99,7 +99,7 @@ done
 
 if [[ -z "{$LIB_IBIC_BIRTHDAYCARD}" ]]
 then
-    #The eivorment variable can be set in the terminal, such as LIB_IBIC_BIRTHDAYCARD=~/birthdaycard/lib
+    #The enviroment variable can be set in the terminal, such as LIB_IBIC_BIRTHDAYCARD=~/birthdaycard/lib
     LIB=$LIB_IBIC_BIRTHDAYCARD
 else
     #edit this variable to the library location, otherwise it will use the current working path
