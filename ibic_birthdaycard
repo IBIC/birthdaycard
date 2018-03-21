@@ -1,0 +1,268 @@
+#!/bin/bash
+
+#the help function
+function HELP {
+    echo ""
+    echo "  Usage"
+    echo ""
+    echo "  Input format: -t /filepathway/<T1 image> -s /filepathway/<T1 skullstrip image> -n <name of patient> -o <output file name> -[d]"
+    echo ""
+    echo "  Example: -s ~/user/lib/19_skstrip.nii.gz -t ~/user/lib/19_T1.nii.gz -n Elizabeth -o finalimage -d 2"
+    echo ""
+    echo "  T1 files must be in standard form. To convert to standard form use fslreorient2std"
+    echo ""
+    echo "  Output file name should not have a prefix"
+    echo ""
+    echo "  Input has four required parameters and one optional:" 
+    echo "  -t for the T1 image"
+    echo "  -s for skullstripped image"
+    echo "  -n for name of patient"
+    echo "  -o for name of the output file"
+    echo "  [-d] for how many centimeters away from the center of the brain to take the sagittal slice. Default is 1 cm."
+    echo ""
+}
+
+
+opterr=0;
+
+#initializing the variables
+T1=1
+T1_skstrip=1
+Name=1
+output=1
+distance=1
+
+if (( $# == 0 )); then
+    echo "No arguments. Refer to help menu."
+    HELP
+    exit 1
+elif [ "$1" == "-h" ]; then
+    HELP
+    exit
+fi
+
+while getopts ":ht:s:o:n:d:" opt; do
+    case $opt in
+      t)
+        T1=$OPTARG;
+        if [ ! -f "$T1" ]
+        then
+            echo "NiFTI file does not exist."
+            exit 1
+        else
+            echo "T1 image: $T1"
+        fi
+        ;;
+    s)
+        T1_skstrip=$OPTARG
+        if [ ! -f "$T1_skstrip" ]
+        then
+            echo "File $T1_skstrip does not exist."
+            exit 1
+        else
+           echo "Skullstrip image: $T1_skstrip"
+        fi
+        ;;
+    n)
+        Name=$OPTARG
+        echo "Name of patient: $Name"
+        ;;
+    o)
+        output=$(basename $OPTARG .png)
+        echo "Name of output file: $output"
+        ;;
+    d)
+        distance=$OPTARG
+        echo "Distance of sagittal: $distance"
+        ;;
+    h)
+        HELP
+        exit
+        ;;
+    \?)
+        echo "Invalid option: $OPTARG" 1>&2
+        exit 1
+        ;;
+    :)
+        echo "Option $OPTARG requires an argument" 1>&2
+        exit 1
+        ;;
+      esac
+done
+
+
+# File to create artwork for card located in lib directory along with artwork
+## for this file
+## By default the enviroment variable is set to $LIB_IBIC_BIRTHDAYCARD
+## By default, if you cd into the `birthdaycard` directory and run the `ibic_birthdaycard` program, everything will work correctly.
+## If the enviroment variable is not set, or the lib is installed elsewhere on the system, then edit the LIB=$(pwd)/lib to the correct location
+
+if [[ -z "{$LIB_IBIC_BIRTHDAYCARD}" ]]
+then
+    #The eivorment variable can be set in the terminal, such as LIB_IBIC_BIRTHDAYCARD=~/birthdaycard/lib
+    LIB=$LIB_IBIC_BIRTHDAYCARD
+else
+    #edit this variable to the library location, otherwise it will use the current working path
+    LIB=$(pwd)/lib
+fi
+
+       
+# Temp directory generated for intermediate file
+tmpdir=$(mktemp -d /tmp/bdayXXXX)
+# tmpdir=/tmp/bday4Qr6
+echo $tmpdir
+
+# Remove spaces from name for file names
+namenospaces=$(echo ${Name} | sed 's/ //g')
+
+# Creates the subject name label
+convert \
+    -background none \
+    -fill red \
+    -font Utopia \
+    -gravity center \
+    -size 700x250 \
+    label:"$Name" \
+    ${tmpdir}/${namenospaces}.png
+
+echo "Generating Image..."
+
+# Finds Dimensions of T1 image
+dim1=$(fslval $T1 dim1)
+dim2=$(fslval $T1 dim2)
+dim3=$(fslval $T1 dim3)
+pixdim2=$(fslval $T1 pixdim2)
+pixdim=$(echo "($pixdim2+0.5)/1" | bc)
+
+# Cutting the neck
+## Starting from 0 along the z axis, iterates through the length of dim3 and
+## takes a slice using fslroi and determines the mean using fslstats.
+## The first slice with a mean greater than zero defines the lower limit of the
+## brain. Slice taken 8 cm down from this lower limit (so some neck is visible
+## after slice)
+sliced_neck=${tmpdir}/$(basename ${T1} .nii.gz)_sliced_neck.nii.gz
+MMtoCM=10
+cm=$(( $MMtoCM / $pixdim ))
+offset=$(($cm * 8))
+for index in $(seq $dim3)
+do
+    tempfile=$tmpdir/$(basename ${T1_skstrip} .nii.gz)_index.nii.gz
+    fslroi $T1_skstrip ${tempfile} 0 $dim1 0 $dim2 $index 1
+    z=$(fslstats ${tempfile} -m)
+    stat="$(echo $z | bc)"
+    if (( $(echo "$stat > 0" | bc -l) ))
+    then
+        slice=$(echo $index - $offset | bc)
+        if (( ${slice} < 0 )) ; then slice=0 ; fi
+        fslroi $T1 ${sliced_neck} 0 $dim1 0 $dim2 $slice $dim3
+        
+        break	
+    fi
+done
+
+## Finding the y upper limit
+## iterates through each dimension starting from 0 along the y-axis, taking a
+## 1 voxel slice and determining the mean
+## the slice with a mean greater than 0 defines the boundary of the brain
+## this limit moved 2 cm and recorded as y_lim
+## $brainy_lim is used for calculating the placement of the hat image
+## $index is the first voxel in the y direction (left to right) from the left that contains brain
+y_lim=1
+offsetY=$(($cm*2))
+
+for index in $(seq 1 1 $dim2)
+do
+    tempfile=$tmpdir/$(basename ${T1_skstrip} .nii.gz)_index1.nii.gz
+    fslroi $T1_skstrip ${tempfile} 0 $dim1 $index 1 0 $dim3
+    y=$(fslstats ${tempfile} -m)
+    stat="$(echo $y | bc)"
+    if (( $(echo "$stat > 0" | bc -l) ))
+    then
+        y_lim="$(echo $index -$offsetY | bc)"
+	brainy_lim=$index
+	echo "brain Y is" $brainy_lim
+        break
+	
+    fi
+done
+
+
+# Finding the z upper limit
+## iterates through each dimension starting from the top along the z-axis,
+## taking a 1 voxel slice and determining the mean
+## the slice with a mean greater than 0 defines the upper boundary of the brain
+## this limit is move up 2 cm and recorded as z_lim
+## $brainz_lim is used for calculating the placement of the hat image
+## $index is the first voxel in the z direction (up and down) from the top where brain is found
+z_lim=1
+offsetZ=$(($cm * 2))
+for index in $(seq $dim3 -1 1)
+do
+    tempfile=$tmpdir/$(basename ${T1_skstrip}_index2 .nii.gz).nii.gz
+    fslroi $T1_skstrip ${tempfile} 0 $dim1 0 $dim2 $index 1
+    z=$(fslstats ${tempfile} -m)
+    stat="$(echo $z | bc)"
+    if (( $(echo "$stat > 0" | bc -l) ))
+    then
+        z_lim="$(echo $index -$offsetZ | bc)"
+        brainz_lim="$(echo $dim3 -$index | bc)"
+	echo "brain Z is" $brainz_lim
+        break
+    fi
+done
+
+
+
+chmod ug+rwx $tmpdir/*
+
+# Takes a Sagittal Slice of the Brain
+## slice taken 1 cm (default) off the center of the brain
+## A different distance can be specified in the parameters.
+## the offset moves the slice off from the center by 1 cm
+
+offset=$(($cm * $distance))
+middle=$(($dim1/2-$offset))
+#middle=$(($dim1/2-$cm))
+slicer ${sliced_neck} -x -$middle $tmpdir/final.png
+
+
+# Adds Hat and Labels to brain
+# offset=$(($dim3 / 2))
+# ydim="$(echo $y_lim + $offset| bc)"
+
+# zdim="$(echo $dim3 - 2 | bc)"
+
+# dots per inch are 300 
+dpi=300
+# width should be 4 inches
+width_in=4
+#height should be 6 inches
+height_in=6
+width_pix=$(echo $dpi $width_in| awk '{print $1*$2}')
+#upper left hand corner is 0,0
+
+# These hat variables are finding the top and left limits of the brain for hat placement
+
+hatx=$(echo 95 -$brainy_lim | bc)
+haty=$(echo 65 -$brainz_lim | bc)
+
+ convert \
+    ${LIB}/background.png -resize 900x700 -threshold 100% -alpha off  \
+    $tmpdir/final.png                       -geometry 500x500+175+25  \
+    -composite $LIB/Rotated_Hat_none3.png   -geometry 250x250+${hatx}+${haty}   \
+    -composite $LIB/Happy_Birthday.png      -geometry 600x600+100+10  \
+    -composite $LIB/We_Lobe_You.png         -geometry 400x400+210+520 \
+    -composite $tmpdir/${namenospaces}.png  -geometry 380x380+230+570 \
+    -composite \
+    -density ${dpi} -resize ${width_pix}x1800 -background black -gravity center  \
+        -extent ${width_pix}x1800 \
+    ${output}.jpg
+
+
+# convert
+# Load background image, resize to 900x700 and turn all black
+# Load T1 image and place it slightly off center
+
+
+echo "$(pwd)/${output}.jpg generated"
+# rm -R $tmpdir
