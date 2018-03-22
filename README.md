@@ -9,8 +9,8 @@ It takes the brain image, identifies an attractive sagittal slice, overlays a pa
 	
 This program is a Bash shell script that uses programs from the FSL software suite. It has been tested in Linux but should also run on macOS.
 
-* Prerequisites. FSL and [ImageMagick](http://www.imagemagick.org/script/index.php)  should be installed.
-* Inputs. The program requires the full structural scan and the skullstripped structural scan.
+* **Prerequisites.** FSL and [ImageMagick](http://www.imagemagick.org/script/index.php)  should be installed.
+* **Inputs.** The program requires the full structural scan and the skullstripped structural scan.
 	     
 We have tested this program on subjects from multiple studies, ranging
 in age from approximately 10-90 years. Please let us know of any problems!
@@ -31,8 +31,8 @@ There are two ways to download this program. Use the first method if you do not 
 1. As a zip file from Github
 	1. Download the zip file from [IBIC/birthdaycard](https://github.com/IBIC/birthdaycard/archive/master.zip)
 	2. Extract the zip file `birthdaycard-master.zip` in your home directory
-	3. A new folder named `birthdaycard-master` will be created
-	4. You can change into this directory to run the example.
+	3. A new directory named `birthdaycard-master` will be created
+	4. You can change into this directory to run the example. We will refer to this directory as `birthdaycard` in the remainder of this document. You can rename it if you wish.
 	
 	   
 2. Using Git
@@ -42,7 +42,7 @@ Type the following command at your prompt:
 ```
 git clone https://github.com/IBIC/birthdaycard.git
 ```
-Now
+Now you will have a directory named `birthdaycard`. You can change into this directory to run the example.
 
 ## Running the Program
 
@@ -120,13 +120,15 @@ image of the birthday hat).
 By default, if you cd into the `birthdaycard` directory and run the `ibic_birthdaycard` program, everything will work correctly.
 
 However, if you wish, you can install the program for all users. Copy
-the `lib` directory into a shared location, and edit the variable `LIB_IBIC_BIRTHDAYCARD` in the `ibic_birthdaycard` script
-to be the new location of your `lib` directory.
+the `lib` directory into a shared location, and edit the `ibic_birthdaycard` program to include the new location of your `lib` directory.
 
-There are two ways to manipulate this variable
+Replace `$(pwd)/lib` with the desired path.
 
-1. The variable can be set either in the terminal with `LIB_IBIC_BIRTHDAYCARD=example/pathway`
-2. Or the variable can be ignored and the pathway can be edited on line 106 in the ibic_birthdaycard shell script. Replace `$(pwd)/lib` with the desired pathway.
+Alternatively, you can set the environment variable
+`LIB_IBIC_BIRTHDAYCARD` in your `.bashrc` to point to the new path,
+and this will override anything. You could use this feature, for
+example, to change the text or the hat images to something else.
+
 
 
 # Assembling and Distributing the Cards
@@ -181,4 +183,4 @@ This program was a team effort from conception to distribution. These are the pe
 * Trevor Day
 * Ji-Min Wang
 * Josh Wolfe
-* Tara Madhyastha
+* Tara Madhyastha 
