@@ -242,7 +242,8 @@ width_pix=$(echo $dpi $width_in| awk '{print $1*$2}')
 #upper left hand corner is 0,0
 
 # These hat variables are finding the top and left limits of the brain for hat placement
-
+## If neccesary, these can be edited for better fit.
+## To adjust, change the constant number. Incriments of 10 work best, and each is changed in their respective x and y coordinates.
 hatx=$(echo 95 -$brainy_lim | bc)
 haty=$(echo 65 -$brainz_lim | bc)
 
