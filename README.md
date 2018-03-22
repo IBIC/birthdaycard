@@ -7,12 +7,13 @@ It takes the brain image, identifies an attractive sagittal slice, overlays a pa
 
 # Program requirements 
 	
-Prerequisites. This program is a Bash shell script that uses programs from the FSL software suite. It has been tested in Linux but should also run on macOS.
+This program is a Bash shell script that uses programs from the FSL software suite. It has been tested in Linux but should also run on macOS.
 
-Inputs. The program requires the full structural scan and the skullstripped structural scan.
+* Prerequisites. FSL and [ImageMagick](http://www.imagemagick.org/script/index.php)  should be installed.
+* Inputs. The program requires the full structural scan and the skullstripped structural scan.
 	     
 We have tested this program on subjects from multiple studies, ranging
-in age from approximately 10-90 years.
+in age from approximately 10-90 years. Please let us know of any problems!
 
 # Purpose
 	
@@ -28,12 +29,11 @@ unique keepsake.
 There are two ways to download this program. Use the first method if you do not have `git` installed, or are not comfortable with `git`. 
 
 1. As a zip file from Github
-	1. Download the zip file from [IBIC/birthdaycard](https://github.com/IBIC/birthdaycard)
-	2. Extract the zip file `birthdaycard-master.zip` to the top of the main directory
+	1. Download the zip file from [IBIC/birthdaycard](https://github.com/IBIC/birthdaycard/archive/master.zip)
+	2. Extract the zip file `birthdaycard-master.zip` in your home directory
 	3. A new folder named `birthdaycard-master` will be created
-	4. This is where the program will be ran from for all users
+	4. You can change into this directory to run the example.
 	
-
 	   
 2. Using Git
 
@@ -42,18 +42,18 @@ Type the following command at your prompt:
 ```
 git clone https://github.com/IBIC/birthdaycard.git
 ```
-
+Now
 
 ## Running the Program
 
 For demonstration purposes we have included two NiFTI files, a
 structural (`T1.nii.gz`) and skull stripped version
-(`T1_skullstripped.nii.gz`). This is subject 50777 from the publically
+(`T1_skullstripped.nii.gz`). This is subject 50777 from the publicly
 available [ABIDE data set](http://fcon_1000.projects.nitrc.org/indi/abide/). We have given this subject
 the name "Alex Doe".
 
 Note that the program assumes that the orientation of the NiFTI files
-matches those of the standard MNI template image as well as MNI spacial normalization.
+matches those of the standard MNI template image.
 
 ### Quick Start
 
@@ -89,8 +89,7 @@ The -n flag specifies the name displayed in the birthday card (put name in quota
 
 The -d flag is optional and  used to determine which saggital slice to use for the card, counted in centimeters, for the best image. By default, a saggital slice 1mm to the *right or left* of the midline is selected. Use this flag to override this selection if the saggital slice selected by default is not attractive.
 
-It is important to verify that the saggital slice chosen is an attractive full brain that isand of voids and artifacts.
-
+It is important to verify that the saggital slice chosen is an attractive full brain that will not scare the participant. 
 
 ![image](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg)
 

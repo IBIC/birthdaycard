@@ -1,4 +1,5 @@
 #!/bin/bash
+# Program to generate birthday card from a structural MRI image
 
 #the help function
 function HELP {
@@ -7,18 +8,18 @@ function HELP {
     echo ""
     echo "  Input format: -t /filepathway/<T1 image> -s /filepathway/<T1 skullstrip image> -n <name of patient> -o <output file name> -[d]"
     echo ""
-    echo "  Example: -s ~/user/lib/19_skstrip.nii.gz -t ~/user/lib/19_T1.nii.gz -n Elizabeth -o finalimage -d 2"
+    echo "  Example: ibic_birthdaycard  -s ~/Subject19_skstrip.nii.gz -t ~/Subject19_T1.nii.gz -n Elizabeth -o finalimage"
     echo ""
-    echo "  T1 files must be in standard form. To convert to standard form use fslreorient2std"
+    echo "  T1 files must be in standard orientation. "
     echo ""
-    echo "  Output file name should not have a prefix"
+    echo "  Output file name should not have a suffix"
     echo ""
     echo "  Input has four required parameters and one optional:" 
     echo "  -t for the T1 image"
     echo "  -s for skullstripped image"
     echo "  -n for name of patient"
     echo "  -o for name of the output file"
-    echo "  [-d] for how many centimeters away from the center of the brain to take the sagittal slice. Default is 1 cm."
+    echo "  [-d] for how many centimeters away from the center of the brain to take the sagittal slice. This parameter is optional. Default is 1 cm."
     echo ""
 }
 
@@ -102,15 +103,15 @@ then
     #The enviroment variable can be set in the terminal, such as LIB_IBIC_BIRTHDAYCARD=~/birthdaycard/lib
     LIB=$LIB_IBIC_BIRTHDAYCARD
 else
-    #edit this variable to the library location, otherwise it will use the current working path
+    #edit this variable to be the library location if you change it
+    #otherwise it will use the lib directory in the current location
     LIB=$(pwd)/lib
 fi
 
        
 # Temp directory generated for intermediate file
 tmpdir=$(mktemp -d /tmp/bdayXXXX)
-# tmpdir=/tmp/bday4Qr6
-echo $tmpdir
+#echo $tmpdir
 
 # Remove spaces from name for file names
 namenospaces=$(echo ${Name} | sed 's/ //g')
@@ -243,7 +244,7 @@ width_pix=$(echo $dpi $width_in| awk '{print $1*$2}')
 
 # These hat variables are finding the top and left limits of the brain for hat placement
 ## If neccesary, these can be edited for better fit.
-## To adjust, change the constant number. Incriments of 10 work best, and each is changed in their respective x and y coordinates.
+## To adjust, change the constant number. Increments of 10 work best, and each is changed in their respective x and y coordinates.
 hatx=$(echo 95 -$brainy_lim | bc)
 haty=$(echo 65 -$brainz_lim | bc)
 
@@ -266,4 +267,4 @@ haty=$(echo 65 -$brainz_lim | bc)
 
 
 echo "$(pwd)/${output}.jpg generated"
-# rm -R $tmpdir
+rm -R $tmpdir
