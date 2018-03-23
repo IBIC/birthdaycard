@@ -55,6 +55,8 @@ the name "Alex Doe".
 Note that the program assumes that the orientation of the NiFTI files
 matches those of the standard MNI template image.
 
+If the T1 image is rotated such that the hat is not aligning properly, apply the T1 to MNI standard space and then use the standardized T1.
+
 ### Quick Start
 
 To run, cd into the `birthdaycard` directory and type the following.
