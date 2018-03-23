@@ -111,7 +111,7 @@ fi
        
 # Temp directory generated for intermediate file
 tmpdir=$(mktemp -d /tmp/bdayXXXX)
-#echo $tmpdir
+
 
 # Remove spaces from name for file names
 namenospaces=$(echo ${Name} | sed 's/ //g')
@@ -181,7 +181,6 @@ do
     then
         y_lim="$(echo $index -$offsetY | bc)"
 	brainy_lim=$index
-	echo "brain Y is" $brainy_lim
         break
 	
     fi
@@ -207,7 +206,6 @@ do
     then
         z_lim="$(echo $index -$offsetZ | bc)"
         brainz_lim="$(echo $dim3 -$index | bc)"
-	echo "brain Z is" $brainz_lim
         break
     fi
 done
