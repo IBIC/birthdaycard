@@ -67,7 +67,7 @@ To run, cd into the `birthdaycard` directory and type the following.
 
 You see output on the terminal that looks like this.
 
-![screendump](https://github.com/IBIC/birthdaycard/blob/master/pics/screendump.png)
+![screendump](https://github.com/IBIC/birthdaycard/blob/master/pics/screendump.jpg)
 
 The file name of the created card will be will be "alexdoe.jpg", and the path will be displayed in the terminal. You can view it by *how to view*. It should look like the example above.
 
@@ -93,9 +93,9 @@ The -d flag is optional and  used to determine which saggital slice to use for t
 
 It is important to verify that the saggital slice chosen is an attractive full brain that will not scare the participant. 
 
-![image](https://github.com/IBIC/birthdaycard/blob/master/pics/wapostscan.jpg)
+![image](https://github.com/IBIC/birthdaycard/blob/master/pics/air-pocket-in-brain.jpg)
 
-[Source](https://www.washingtonpost.com/news/to-your-health/wp/2018/03/12/doctors-find-air-pocket-where-part-of-mans-brain-should-be/)
+[Source](http://www.techtimes.com/articles/222949/20180313/doctors-discover-3-inch-air-pocket-where-part-of-mans-brain-should-be.htm)
 
 ### Output
 
