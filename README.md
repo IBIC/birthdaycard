@@ -71,6 +71,10 @@ You see output on the terminal that looks like this.
 
 The file name of the created card will be will be "alexdoe.jpg", and the path will be displayed in the terminal. You can view it by *how to view*. It should look like the example above.
 
+### How to View
+
+The output file path will be printed in the terminal. In the above example, the file has been placed in the `birthdaycard` directory. This is the default location. To view this file, use an image viewer, such as `eog Alexdoe.jpg` or use a browser such as `firefox Alexdoe.jpg`
+
 ### More Detailed Usage
 
 The program has 5 different flags. Flags -t, -s, -o, and -n are
@@ -89,9 +93,9 @@ The -o flag specifies the output image file name (a .jpg extention is automatica
 
 The -n flag specifies the name displayed in the birthday card (put name in quotations to retain spaces)
 
-The -d flag is optional and  used to determine which saggital slice to use for the card, counted in centimeters, for the best image. By default, a saggital slice 1mm to the *right or left* of the midline is selected. Use this flag to override this selection if the saggital slice selected by default is not attractive.
+The -d flag is optional and  used to determine which sagittal slice to use for the card, counted in centimeters, for the best image. By default, a sagittal slice 1mm to the *right or left* of the midline is selected. Use this flag to override this selection if the sagittal slice selected by default is not attractive.
 
-It is important to verify that the saggital slice chosen is an attractive full brain that will not scare the participant. 
+It is important to verify that the sagittal slice chosen is an attractive full brain that will not scare the participant. 
 
 ![image](https://github.com/IBIC/birthdaycard/blob/master/pics/air-pocket-in-brain.jpg)
 
