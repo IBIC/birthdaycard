@@ -163,7 +163,7 @@ page, cut out, and placed in the card.
 We have found that it is easiest to assemble and decorate cards at the
 begining of the year, organize them by birthday month, and mail cards
 at the end of every month for birthdays occurring in the next month. We
-have also found that Mail Merge is a good tool for creating mailing lables.
+have also found that Mail Merge is a good tool for creating mailing labels.
 
 In this way, assembling and decorating the cards can be done all at
 once, and gives a good excuse to get the entire office together for a
