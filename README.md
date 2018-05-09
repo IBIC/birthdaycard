@@ -187,6 +187,6 @@ This program was a team effort from conception to distribution. These are the pe
 * An Wang
 * Briana Lee
 * Trevor Day
-* Ji-Min Wang
+* Ji-Min Park
 * Josh Wolfe
 * Tara Madhyastha 
